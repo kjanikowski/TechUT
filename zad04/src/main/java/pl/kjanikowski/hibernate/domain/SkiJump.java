@@ -20,24 +20,23 @@ public class SkiJump {
 	private boolean hasRecord;
 	
 	
-	private City city;
+//	private City city;
 	
-	private List<Competition> competition;
-	
-	private SkiType skiType;
+//	private List<Competition> competition;
+//	
+//	private SkiType skiType;
 	
 	
 	public SkiJump() {
 		
 	}
-	
-	public SkiJump(String name, int size, Date doc, boolean hasRecord, String city, String competition) {
+		public SkiJump(String name, int size, Date doc, boolean hasRecord /*String city String competition*/) {
 		super();
 		this.name = name;
 		this.size = size;
 		this.doc = doc;
 		this.hasRecord = hasRecord;
-		setCity(new City(city));
+	//	setCity(new City(city));
 		
 	}
 	
@@ -79,31 +78,31 @@ public class SkiJump {
 		this.hasRecord = hasRecord;
 	}
 
-	@ManyToOne
-	public City getCity() {
-		return city;
-	}
+//	@ManyToOne
+//	public City getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(City city) {
+//		this.city = city;
+//	}
 
-	public void setCity(City city) {
-		this.city = city;
-	}
+//	@ManyToOne
+//	public List<Competition> getCompetition() {
+//		return competition;
+//	}
+//
+//	public void setCompetition(List<Competition> competition) {
+//		this.competition = competition;
+//	}
+//
+//	@OneToOne
+//	public SkiType getSkiType() {
+//		return skiType;
+//	}
 
-	@ManyToOne
-	public List<Competition> getCompetition() {
-		return competition;
-	}
-
-	public void setCompetition(List<Competition> competition) {
-		this.competition = competition;
-	}
-
-	@OneToOne
-	public SkiType getSkiType() {
-		return skiType;
-	}
-
-	public void setSkiType(SkiType skiType) {
-		this.skiType = skiType;
-	}
+//	public void setSkiType(SkiType skiType) {
+//		this.skiType = skiType;
+//	}
 
 }
