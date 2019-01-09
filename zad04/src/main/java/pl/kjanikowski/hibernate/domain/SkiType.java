@@ -1,5 +1,11 @@
 package pl.kjanikowski.hibernate.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class SkiType {
 	
 	private long id;
@@ -16,7 +22,8 @@ public class SkiType {
 	}
 
 
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
