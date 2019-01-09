@@ -20,11 +20,11 @@ public class SkiJump {
 	private boolean hasRecord;
 	
 	
-//	private City city;
+	private City city;
 	
-//	private List<Competition> competition;
-//	
-//	private SkiType skiType;
+	private List<Competition> competition;
+	
+	private SkiType skiType;
 	
 	
 	public SkiJump() {
@@ -36,7 +36,7 @@ public class SkiJump {
 		this.size = size;
 		this.doc = doc;
 		this.hasRecord = hasRecord;
-	//	setCity(new City(city));
+//		setCity(new City(city));
 		
 	}
 	
@@ -78,31 +78,31 @@ public class SkiJump {
 		this.hasRecord = hasRecord;
 	}
 
-//	@ManyToOne
-//	public City getCity() {
-//		return city;
-//	}
-//
-//	public void setCity(City city) {
-//		this.city = city;
-//	}
+	@ManyToOne
+	public City getCity() {
+		return city;
+	}
 
-//	@ManyToOne
-//	public List<Competition> getCompetition() {
-//		return competition;
-//	}
-//
-//	public void setCompetition(List<Competition> competition) {
-//		this.competition = competition;
-//	}
-//
-//	@OneToOne
-//	public SkiType getSkiType() {
-//		return skiType;
-//	}
+	public void setCity(City city) {
+		this.city = city;
+	}
 
-//	public void setSkiType(SkiType skiType) {
-//		this.skiType = skiType;
-//	}
+	@ManyToOne
+	public List<Competition> getCompetition() {
+		return competition;
+	}
+
+	public void setCompetition(List<Competition> competition) {
+		this.competition = competition;
+	}
+
+	@OneToOne
+	public SkiType getSkiType() {
+		return skiType;
+	}
+
+	public void setSkiType(SkiType skiType) {
+		this.skiType = skiType;
+	}
 
 }
