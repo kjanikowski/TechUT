@@ -23,7 +23,7 @@ public class SkiJump {
 	}
 	
 	public String toString() {
-		return name;
+		return name + ", wielkosc " + size + " dzien zawodow " + doc.toString() + " ma rekord? "+ hasRecord;
 	}
 	
 	
