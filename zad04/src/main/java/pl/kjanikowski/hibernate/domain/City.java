@@ -1,5 +1,6 @@
 package pl.kjanikowski.hibernate.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class City {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	@Column(unique = true)
 	public String getName() {
 		return name;
 	}

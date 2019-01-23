@@ -11,21 +11,14 @@ public interface SkiJumpManager {
 	
 	void addSkiJump(SkiJump skiJump);
 	List<SkiJump> getAllSkiJumps();
-	void deleteSkiJump(SkiJump skiJump);
-	SkiJump findByName(String name);
+	SkiJump getByName(String name);
+	void removeSkiJump(long id);
+	SkiJump getSkiJump(long id);
+	List<SkiJump> getAllByType(String type);
+	SkiJump getByCity(String city);
 	
 	
-	void addCity(City city);
-	List<City> getAllCities();
-	void deleteCity(City city);
-	
-	void addCompetition(Competition competition);
-	List<Competition> getCompetition();
-	void deleteCompetition(Competition competition);
-	
-	void addSkiType(SkiType skiType);
-	List<Competition> getSkiType();
-	void deleteSkiType(SkiType skiType);
+
 	
 	
 

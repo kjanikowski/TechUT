@@ -17,82 +17,52 @@ public class SkiJumpManagerImpl implements SkiJumpManager{
 	
 	
 	@Autowired
-	private SessionFactory hs;
+	public SessionFactory hs;
+
 
 	@Override
 	public void addSkiJump(SkiJump skiJump) {
 		hs.getCurrentSession().persist(skiJump);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<SkiJump> getAllSkiJumps() {
 		// TODO Auto-generated method stub
-		return null;
+		return hs.getCurrentSession().getNamedQuery("skiJump.getAll").list();
 	}
 
 	@Override
-	public void deleteSkiJump(SkiJump skiJump) {
-		hs.getCurrentSession().delete(skiJump);
+	public void removeSkiJump(long id) {
+		SkiJump skijump = getSkiJump(id);
+		hs.getCurrentSession().delete(skijump);
 	}
 
 	@Override
-	public SkiJump findByName(String name) {
+	public SkiJump getByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return (SkiJump) hs.getCurrentSession().getNamedQuery("skiJump.getByName").setString("name", name).uniqueResult();
 	}
 
 	@Override
-	public void addCity(City city) {
+	public SkiJump getSkiJump(long id) {
 		// TODO Auto-generated method stub
-		
+		return (SkiJump) hs.getCurrentSession().get(SkiJump.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SkiJump> getAllByType(String type) {
+		// TODO Auto-generated method stub
+		return (List<SkiJump>) hs.getCurrentSession().getNamedQuery("skiJump.getAllByType").setString("type", type).list();
 	}
 
 	@Override
-	public List<City> getAllCities() {
+	public SkiJump getByCity(String city) {
 		// TODO Auto-generated method stub
-		return null;
+		return (SkiJump) hs.getCurrentSession().getNamedQuery("skiJump.getByCity").setString("name", city).uniqueResult();
 	}
 
-	@Override
-	public void deleteCity(City city) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addCompetition(Competition competition) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Competition> getCompetition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteCompetition(Competition competition) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addSkiType(SkiType skiType) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Competition> getSkiType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteSkiType(SkiType skiType) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

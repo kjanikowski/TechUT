@@ -1,5 +1,6 @@
 package pl.kjanikowski.hibernate.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,11 +10,11 @@ import javax.persistence.Id;
 public class SkiType {
 	
 	private long id;
-	private String Type;
+	private String type;
 	
 	public SkiType(String type) {
 		super();
-		Type = type;
+		this.type = type;
 	}
 
 	public SkiType() {
@@ -23,7 +24,7 @@ public class SkiType {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -31,12 +32,12 @@ public class SkiType {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	@Column(unique = true)
 	public String getType() {
-		return Type;
+		return type;
 	}
 	public void setType(String type) {
-		Type = type;
+		this.type = type;
 	}
 
 

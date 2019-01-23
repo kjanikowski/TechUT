@@ -3,13 +3,22 @@ package pl.kjanikowski.hibernate.domain;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
-
+@NamedQueries({
+	@NamedQuery(name = "skiJump.getAll", query = "SELECT s FROM SkiJump s"),
+	@NamedQuery(name = "skiJump.getByName", query = "SELECT s FROM SkiJump s WHERE s.name = :name"),
+	@NamedQuery(name = "skiJump.getAllByType", query = "SELECT s FROM SkiJump s JOIN s.skiType t WHERE t.type = :type"),
+	@NamedQuery(name = "skiJump.getByCity", query = "SELECT s FROM SkiJump s JOIN s.city c WHERE c.name = :name")
+})
 @Entity
 public class SkiJump {
 	
@@ -28,15 +37,17 @@ public class SkiJump {
 	
 	
 	public SkiJump() {
-		
+		super();
 	}
-		public SkiJump(String name, int size, Date doc, boolean hasRecord /*String city String competition*/) {
+		public SkiJump(String name, int size, Date doc, boolean hasRecord, City city, SkiType skiType, List<Competition> competioion) {
 		super();
 		this.name = name;
 		this.size = size;
 		this.doc = doc;
 		this.hasRecord = hasRecord;
-//		setCity(new City(city));
+		this.city = city;
+		this. skiType = skiType;
+		this.competition = competioion;
 		
 	}
 	
@@ -78,7 +89,7 @@ public class SkiJump {
 		this.hasRecord = hasRecord;
 	}
 
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	public City getCity() {
 		return city;
 	}
@@ -87,7 +98,7 @@ public class SkiJump {
 		this.city = city;
 	}
 
-	@ManyToOne
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	public List<Competition> getCompetition() {
 		return competition;
 	}
@@ -96,7 +107,7 @@ public class SkiJump {
 		this.competition = competition;
 	}
 
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	public SkiType getSkiType() {
 		return skiType;
 	}
